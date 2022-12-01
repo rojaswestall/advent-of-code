@@ -29,7 +29,6 @@ func partTwo(sortedCals []int) {
 
 func getSortedCals() []int {
 	// open file
-	// f, err := os.Open("~/Documents/GitHub/rojaswestall/advent-of-code/2022/day_1/input.txt")
 	f, err := os.Open("input.txt")
 	if err != nil {
 		log.Fatal(err)
