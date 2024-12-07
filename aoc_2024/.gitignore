@@ -1,0 +1,5 @@
+# Ignore the target directory
+target/
+
+# Ignore other generated files
+*.rs.bk
