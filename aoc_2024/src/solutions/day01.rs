@@ -19,7 +19,7 @@ fn part1() -> i32 {
     let mut total_diff = 0;
     for i in 0..left_list.len() {
         let diff = (left_list[i] - right_list[i]).abs();
-        total_diff+=diff
+        total_diff += diff
     }
 
     return total_diff;
@@ -43,7 +43,7 @@ fn part2() -> i32 {
         similarity_score += left_list[i] * &frequency;
     }
 
-    return similarity_score
+    return similarity_score;
 }
 
 fn find_occurrences_in_list(item: i32, list: &Vec<i32>) -> i32 {
@@ -53,7 +53,7 @@ fn find_occurrences_in_list(item: i32, list: &Vec<i32>) -> i32 {
             frequency += 1;
         }
     }
-    return frequency
+    return frequency;
 }
 
 fn read_lists_from_input() -> (Vec<i32>, Vec<i32>) {
@@ -87,8 +87,12 @@ fn parse_line(line: &str) -> Result<(i32, i32), String> {
         return Err(format!("Expected two numbers, but got: {}", line));
     }
 
-    let first = parts[0].parse::<i32>().map_err(|e| format!("Error parsing first number: {}", e))?;
-    let second = parts[1].parse::<i32>().map_err(|e| format!("Error parsing second number: {}", e))?;
+    let first = parts[0]
+        .parse::<i32>()
+        .map_err(|e| format!("Error parsing first number: {}", e))?;
+    let second = parts[1]
+        .parse::<i32>()
+        .map_err(|e| format!("Error parsing second number: {}", e))?;
 
     Ok((first, second))
 }
