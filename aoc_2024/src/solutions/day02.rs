@@ -30,7 +30,7 @@ fn part2() -> i32 {
         // try the entire report
         if is_report_safe(&report) {
             num_safe_reports += 1;
-            continue
+            continue;
         }
 
         for i in 0..report.len() {
@@ -39,10 +39,9 @@ fn part2() -> i32 {
             new_report.remove(i);
             if is_report_safe(&new_report) {
                 num_safe_reports += 1;
-                break
+                break;
             }
         }
-        
     }
     return num_safe_reports;
 }
@@ -56,11 +55,11 @@ fn is_report_safe(report: &Vec<i32>) -> bool {
     for (i, level) in report.iter().enumerate() {
         // can't compare the first value to the last value
         if i == 0 {
-            continue
+            continue;
         }
 
         // convenience
-        let last_level = report[i-1];
+        let last_level = report[i - 1];
 
         // set increasing if on second level
         if i == 1 && *level > last_level {
@@ -69,26 +68,26 @@ fn is_report_safe(report: &Vec<i32>) -> bool {
 
         // has to increase/decrease by at least one
         if *level == last_level {
-            return false
+            return false;
         }
 
         // cannot increase/decrease by more than three
         if (level - last_level).abs() > 3 {
-            return false
+            return false;
         }
 
         // if increasing and current value is less than last value
         if increasing && *level < last_level {
-            return false
+            return false;
         }
 
         // if decreasing and current value is greater than last value
         if !increasing && *level > last_level {
-            return false
+            return false;
         }
     }
 
-    return true
+    return true;
 }
 
 fn read_reports_from_input() -> Vec<Vec<i32>> {
@@ -109,15 +108,17 @@ fn read_reports_from_input() -> Vec<Vec<i32>> {
         };
         reports.push(report);
     }
-    return reports
+    return reports;
 }
 
 fn parse_line(line: &str) -> Result<Vec<i32>, String> {
     let levels: Vec<&str> = line.split_whitespace().collect();
 
-    let mut report = Vec::new(); 
+    let mut report = Vec::new();
     for l in levels {
-        let new_level = l.parse::<i32>().map_err(|e | format!("Error parsing level: {}", e))?;
+        let new_level = l
+            .parse::<i32>()
+            .map_err(|e| format!("Error parsing level: {}", e))?;
         report.push(new_level);
     }
 
