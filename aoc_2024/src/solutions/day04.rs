@@ -10,7 +10,7 @@ pub fn solve() {
 
 fn part1() -> i32 {
     const SEARCH_STRING: &str = "XMAS";
-    let matrix = get_matrix_from_input();
+    let matrix = file::get_string_matrix_from_text_input(DAY_4_INPUT);
     let mut instances_of_xmas = 0;
     for (i, row) in matrix.iter().enumerate() {
         for (j, column_val) in row.iter().enumerate() {
@@ -25,7 +25,7 @@ fn part1() -> i32 {
 }
 
 fn part2() -> i32 {
-    let matrix = get_matrix_from_input();
+    let matrix = file::get_string_matrix_from_text_input(DAY_4_INPUT);
     let mut instances_of_xmas = 0;
     for (i, row) in matrix.iter().enumerate() {
         for (j, column_val) in row.iter().enumerate() {
@@ -227,24 +227,4 @@ fn get_num_instances_of_string_in_all_directions(
         num_instances += 1
     }
     return num_instances;
-}
-
-fn get_matrix_from_input() -> Vec<Vec<String>> {
-    let lines = match file::read_lines_from_text(DAY_4_INPUT) {
-        Ok(lines) => lines,
-        Err(e) => {
-            panic!("Error reading file: {}", e);
-        }
-    };
-
-    let mut matrix = Vec::new();
-    for line in lines {
-        let mut row = Vec::new();
-        for ch in line.chars() {
-            row.push(ch.to_string());
-        }
-        matrix.push(row)
-    }
-
-    return matrix;
 }

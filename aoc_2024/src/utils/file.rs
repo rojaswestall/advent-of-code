@@ -11,3 +11,23 @@ pub fn read_lines_from_text(filename: &str) -> io::Result<Vec<String>> {
 
     reader.lines().collect()
 }
+
+pub fn get_string_matrix_from_text_input(filename: &str) -> Vec<Vec<String>> {
+    let lines = match read_lines_from_text(filename) {
+        Ok(lines) => lines,
+        Err(e) => {
+            panic!("Error reading file: {}", e);
+        }
+    };
+
+    let mut matrix = Vec::new();
+    for line in lines {
+        let mut row = Vec::new();
+        for ch in line.chars() {
+            row.push(ch.to_string());
+        }
+        matrix.push(row)
+    }
+
+    return matrix;
+}
