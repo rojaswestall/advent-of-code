@@ -31,3 +31,24 @@ pub fn get_string_matrix_from_text_input(filename: &str) -> Vec<Vec<String>> {
 
     return matrix;
 }
+
+pub fn get_i32_matrix_from_text_input(filename: &str) -> Vec<Vec<i32>> {
+    let lines = match read_lines_from_text(filename) {
+        Ok(lines) => lines,
+        Err(e) => {
+            panic!("Error reading file: {}", e);
+        }
+    };
+
+    let mut matrix = Vec::new();
+    for line in lines {
+        let mut row = Vec::new();
+        for ch in line.chars() {
+            let parsed = ch.to_digit(10).map(|d| d as i32).expect("Error parsing input into i32");
+            row.push(parsed);
+        }
+        matrix.push(row)
+    }
+
+    return matrix;
+}
