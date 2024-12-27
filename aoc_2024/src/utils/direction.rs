@@ -1,6 +1,6 @@
 use std::fmt;
 
-#[derive(PartialEq, Copy, Clone)]
+#[derive(PartialEq, Eq, Hash, Copy, Clone, Debug)]
 pub enum Direction {
     Up,
     Right,
@@ -44,6 +44,7 @@ impl Direction {
             }
         }
     }
+
 }
 
 // Implement the Display trait for the Direction enum
